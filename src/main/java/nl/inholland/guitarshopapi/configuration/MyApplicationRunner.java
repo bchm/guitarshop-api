@@ -1,7 +1,9 @@
 package nl.inholland.guitarshopapi.configuration;
 
+import nl.inholland.guitarshopapi.dao.ColorRepository;
 import nl.inholland.guitarshopapi.dao.GuitarRepository;
 import nl.inholland.guitarshopapi.dao.StockRepository;
+import nl.inholland.guitarshopapi.model.Color;
 import nl.inholland.guitarshopapi.model.Guitar;
 import nl.inholland.guitarshopapi.model.Stock;
 import nl.inholland.guitarshopapi.service.GuitarService;
@@ -24,21 +26,30 @@ public class MyApplicationRunner implements ApplicationRunner {
 
   private GuitarRepository guitarRepository;
   private StockRepository stockRepository;
+  private ColorRepository colorRepository;
 
-  public MyApplicationRunner(GuitarRepository guitarRepository, StockRepository stockRepository) {
+  public MyApplicationRunner(GuitarRepository guitarRepository, StockRepository stockRepository, ColorRepository colorRepository) {
     this.guitarRepository = guitarRepository;
     this.stockRepository = stockRepository;
+    this.colorRepository = colorRepository;
   }
 
   @Override
   public void run(ApplicationArguments args) {
+    List<Color> colors =
+            Arrays.asList(
+                    new Color("yellow", 1000001L),
+                    new Color("red", 1000001L),
+                    new Color("blue", 1000001L));
+    colors.forEach(colorRepository::save);
     List<Guitar> guitars =
         Arrays.asList(
             new Guitar("Fender", "Telecaster", 899),
-            new Guitar("Fender", "Stratcaster", 1299),
+            new Guitar("Fender", "Stratocaster", 1299),
             new Guitar("Gibson", "Les Paul", 2999));
 
     guitars.forEach(guitarRepository::save);
+
 
 //    guitarRepository.findAll().forEach(System.out::println);
 

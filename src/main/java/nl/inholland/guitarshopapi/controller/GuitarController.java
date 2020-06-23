@@ -1,5 +1,6 @@
 package nl.inholland.guitarshopapi.controller;
 
+import nl.inholland.guitarshopapi.model.Color;
 import nl.inholland.guitarshopapi.model.Guitar;
 import nl.inholland.guitarshopapi.service.GuitarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,12 @@ public class GuitarController {
 
   @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity getAllGuitars() {
-    List<Guitar> guitars = guitarService.getAllGuitars();
-    System.out.println(guitars);
+//    List<Guitar> guitars = guitarService.getAllGuitars();
+    List<Color> colors = guitarService.getAllColorsOfGuitar();
     return ResponseEntity
         .status(200)
-        .body(guitars);
+//        .body(guitars);
+    .body(colors);
   }
 
   //na de /guitars/ als daar een string invoert kan hij dat niet als long parsen!
