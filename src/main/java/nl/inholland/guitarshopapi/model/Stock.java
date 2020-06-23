@@ -21,6 +21,9 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stock_seq")
     private long id;
     private int quantity;
+    private String brand;
+    private String model;
+    private double price;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="guitar_id")
@@ -32,6 +35,9 @@ public class Stock {
     public Stock(int quantity, Guitar guitar) {
         this.quantity = quantity;
         this.guitar = guitar;
+        brand = this.guitar.getBrand();
+        model = this.guitar.getModel();
+        price = this.guitar.getPrice();
     }
 
     public long getId() {

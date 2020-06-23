@@ -2,6 +2,7 @@ package nl.inholland.guitarshopapi.controller;
 
 import nl.inholland.guitarshopapi.model.Guitar;
 import nl.inholland.guitarshopapi.service.GuitarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,21 +18,20 @@ import java.util.List;
 @Controller
 @RequestMapping("guitars")
 public class GuitarController {
-
+@Autowired
   private GuitarService guitarService;
 
-  public GuitarController(GuitarService guitarService) {
-    this.guitarService = guitarService;
-  }
 
   @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity getAllGuitars() {
     List<Guitar> guitars = guitarService.getAllGuitars();
+    System.out.println(guitars);
     return ResponseEntity
         .status(200)
         .body(guitars);
   }
 
+  //na de /guitars/ als daar een string invoert kan hij dat niet als long parsen!
   @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity getGuitarById(@PathVariable long id) {
     try {
