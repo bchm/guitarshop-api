@@ -3,13 +3,9 @@
 I have taken the liberty of providing a git repository that will accompany the lessons.
 Each lesson has one or more branches. The master branch will be bare bones, and should never be merged.
 
-To check out each branch, do e.g.:
+***To run this application on docker use these commands***
 
-```git checkout lesson1/my-first-api```
-
-Branches currently available:
-
-* lesson1/my-first-api
-* lesson3/spring-data
-
-***Do not push to this repository***
+``` mvn clean install
+``` mvn clean package
+``` docker-compose build
+``` docker-compose up
