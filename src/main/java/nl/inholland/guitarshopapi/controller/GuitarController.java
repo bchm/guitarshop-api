@@ -25,12 +25,12 @@ public class GuitarController {
 
   @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity getAllGuitars() {
-//    List<Guitar> guitars = guitarService.getAllGuitars();
-    List<Color> colors = guitarService.getAllColorsOfGuitar();
+    List<Guitar> guitars = guitarService.getAllGuitars();
+//    List<Color> colors = guitarService.getAllColorsOfGuitar();
     return ResponseEntity
         .status(200)
-//        .body(guitars);
-    .body(colors);
+        .body(guitars);
+//    .body(colors);
   }
 
   //na de /guitars/ als daar een string invoert kan hij dat niet als long parsen!

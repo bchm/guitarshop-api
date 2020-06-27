@@ -23,9 +23,9 @@ public class Guitar {
   @JoinColumn(name="guitar_id")
   private Stock stock;
 
-  @OneToMany
-  @JoinColumn
-  private List<Color> colors;
+//  @OneToMany
+//  @JoinColumn
+//  private List<Color> colors;
 
   public Guitar() {
   }
@@ -40,7 +40,7 @@ public class Guitar {
     return id;
   }
 
-  public List<Color> getColors () {return colors;}
+//  public List<Color> getColors () {return colors;}
 
   public void setId(long id) {
     this.id = id;
