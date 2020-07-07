@@ -1,7 +1,6 @@
-# Jack's Guitar Shop
+# Jack's Guitar Shop, now on Docker!
 
-I have taken the liberty of providing a git repository that will accompany the lessons.
-Each lesson has one or more branches. The master branch will be bare bones, and should never be merged.
+I added Docker to the API Java app from @wimmelstein 
 
 ***To run this application on docker use these commands***
 
