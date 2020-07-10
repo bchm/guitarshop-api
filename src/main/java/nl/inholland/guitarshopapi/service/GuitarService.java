@@ -2,7 +2,6 @@ package nl.inholland.guitarshopapi.service;
 
 import nl.inholland.guitarshopapi.dao.GuitarRepository;
 import nl.inholland.guitarshopapi.dao.StockRepository;
-import nl.inholland.guitarshopapi.model.Color;
 import nl.inholland.guitarshopapi.model.Guitar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,17 +26,6 @@ public class GuitarService {
     return StreamSupport
             .stream(guitarRepository.getAllByPriceGreaterThanEqualOrderById(200.00).spliterator(), false)
             .collect(Collectors.toList());
-  }
-
-  public List<Color> getAllColorsOfGuitar() {
-    List<Guitar> guitars = StreamSupport
-            .stream(guitarRepository.getAllByPriceGreaterThanEqualOrderById(200.00).spliterator(), false)
-            .collect(Collectors.toList());
-    List<Color> colors = guitars.get(0).getColors();
-    colors.addAll(guitars.get(1).getColors());
-    colors.addAll(guitars.get(2).getColors());
-
-    return colors;
   }
 
   public Guitar getGuitarById(long id) {

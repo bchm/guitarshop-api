@@ -24,9 +24,9 @@ import java.util.stream.StreamSupport;
 @Transactional
 public class MyApplicationRunner implements ApplicationRunner {
 
-  private GuitarRepository guitarRepository;
-  private StockRepository stockRepository;
-  private ColorRepository colorRepository;
+  private final GuitarRepository guitarRepository;
+  private final StockRepository stockRepository;
+  private final ColorRepository colorRepository;
 
   public MyApplicationRunner(GuitarRepository guitarRepository, StockRepository stockRepository, ColorRepository colorRepository) {
     this.guitarRepository = guitarRepository;
